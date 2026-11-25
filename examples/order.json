@@ -1,0 +1,8 @@
+{
+  "images": [
+    {"image_id": "M42-001", "detector": "CCD-A", "exposure_seconds": 60, "filter": "r"},
+    {"image_id": "M42-002", "detector": "CCD-A", "exposure_seconds": 60, "filter": "r"},
+    {"image_id": "M42-003", "detector": "CCD-A", "exposure_seconds": 120, "filter": "g"}
+  ],
+  "candidate_file_ids": [1, 2, 3, 4, 5, 6]
+}

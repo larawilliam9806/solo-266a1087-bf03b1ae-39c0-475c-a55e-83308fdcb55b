@@ -1,0 +1,22 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: astro-calibration-planner:latest
+    ports:
+      - "${HOST_PORT:-8000}:8000"
+    environment:
+      CALIB_DB_PATH: /data/calibration.db
+    volumes:
+      - astro-calib-data:/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=3).status == 200 else 1)"]
+      interval: 5s
+      timeout: 4s
+      retries: 12
+      start_period: 5s
+
+volumes:
+  astro-calib-data:
